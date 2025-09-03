@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Undangan Aqiqah</title>
+  <meta name="description" content="Undangan aqiqah digital – template siap kirim." />
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --accent: #bfa26a; /* gold-ish */
+      --accent-2: #e6d9b3;
+    }
+    * { box-sizing: border-box; }
+    body{
+      margin:0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); background: var(--bg);
+      line-height:1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    }
+    .wrap{ max-width: 860px; margin: 0 auto; padding: 24px; }
+    .card{
+      background: var(--card);
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(31,41,55,.08);
+      overflow: hidden;
+      border: 1px solid #eee;
+      animation: fadeIn 1.5s ease;
+    }
+    .hero{
+      position: relative;
+      padding: 48px 28px 24px;
+      background: radial-gradient(1200px 400px at 10% 0%, var(--accent-2), transparent),
+                  radial-gradient(1200px 400px at 90% 0%, #f2ead4, transparent),
+                  linear-gradient(180deg, #fff, #f8f5ee);
+      text-align: center;
+      animation: slideDown 1.2s ease;
+    }
+    .badge{
+      display: inline-block; background: var(--accent); color:#fff; padding: 6px 12px; border-radius: 999px; letter-spacing:.08em; font-size:.8rem; text-transform: uppercase;
+      animation: fadeIn 2s ease;
+    }
+    h1{ margin: 14px 0 6px; font-size: clamp(28px, 6vw, 44px); line-height:1.15; animation: zoomIn 1.5s ease; }
+    .subtitle{ color: var(--muted); font-size: clamp(14px, 2.5vw, 18px); animation: fadeInUp 2s ease; }
+    .bismillah{ margin: 18px auto 0; font-style: italic; color: #8f6f28; font-weight: 600; animation: fadeInUp 2.3s ease; }
+
+    .grid{ display:grid; gap: 24px; padding: 28px; }
+    @media (min-width: 760px){ .grid{ grid-template-columns: 1.1fr .9fr; } }
+
+    .panel{ background:#fff; border: 1px solid #eee; border-radius: 18px; padding: 20px; animation: fadeInUp 1.5s ease; }
+    .title{ font-weight:700; font-size:1.05rem; margin:0 0 8px; letter-spacing:.02em; }
+    .muted{ color:var(--muted); }
+    .divider{ height:1px; background:linear-gradient(90deg, transparent, #e8e2d4, transparent); margin: 14px 0; }
+
+    .info{ display:grid; grid-template-columns: 28px 1fr; gap:12px; align-items: start; margin: 10px 0; animation: fadeInLeft 1.5s ease; }
+    .icon{ width:28px; height:28px; border-radius:8px; background: var(--accent-2); display:grid; place-items:center; font-weight:700; color:#7b6836; }
+
+    .quote{ font-style: italic; background: #fcfaf5; border:1px dashed #eadfbe; padding:14px; border-radius:14px; animation: fadeIn 2s ease; }
+
+    .cta-row{ display:flex; flex-wrap:wrap; gap: 12px; margin-top: 14px; }
+    .btn{ display:inline-block; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-weight:600; border:1px solid var(--accent); color:#fff; background: var(--accent); transition: all .3s ease; }
+    .btn:hover{ transform: scale(1.05); box-shadow:0 4px 10px rgba(0,0,0,.1); }
+    .btn.alt{ background: transparent; color: var(--accent); }
+
+    .footer{ text-align:center; padding: 18px; font-size:.9rem; color: var(--muted); background: #fffcf2; animation: fadeInUp 2.5s ease; }
+
+    .countdown{ display:flex; gap:10px; justify-content:center; margin-top:10px; }
+    .cd-box{ min-width:68px; background:#fff; border:1px solid #eee; border-radius:12px; padding:10px; text-align:center; animation: fadeIn 2.2s ease; }
+    .cd-num{ font-size:1.25rem; font-weight:800; }
+    .cd-lab{ font-size:.72rem; color:var(--muted); }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from{opacity:0} to{opacity:1}
+    }
+    @keyframes slideDown {
+      from{opacity:0; transform:translateY(-20px)} to{opacity:1; transform:translateY(0)}
+    }
+    @keyframes fadeInUp {
+      from{opacity:0; transform:translateY(30px)} to{opacity:1; transform:translateY(0)}
+    }
+    @keyframes fadeInLeft {
+      from{opacity:0; transform:translateX(-20px)} to{opacity:1; transform:translateX(0)}
+    }
+    @keyframes zoomIn {
+      from{opacity:0; transform:scale(.8)} to{opacity:1; transform:scale(1)}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="hero">
+        <span class="badge">Undangan Aqiqah</span>
+        <h1 id="nama-bayi">Aqiqah <span style="color:#7b6836">Muhammad Alif Ramadhan</span></h1>
+        <div class="subtitle">Dengan memohon rahmat dan ridha Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara aqiqah putra/putri kami.</div>
+        <div class="bismillah">Bismillāhirraḥmānirraḥīm</div>
+        <div id="countdown" class="countdown" hidden>
+          <div class="cd-box"><div class="cd-num" id="cd-d">–</div><div class="cd-lab">Hari</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-h">–</div><div class="cd-lab">Jam</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-m">–</div><div class="cd-lab">Menit</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-s">–</div><div class="cd-lab">Detik</div></div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <section class="panel">
+          <p class="title">Detail Acara</p>
+          <div class="divider"></div>
+          <div class="info">
+            <div class="icon">📅</div>
+            <div>
+              <div><strong>Hari/Tanggal</strong></div>
+              <div class="muted" id="tgl">Ahad, 12 Oktober 2025</div>
+            </div>
+          </div>
+          <div class="info">
+            <div class="icon">⏰</div>
+            <div>
+              <div><strong>Waktu</strong></div>
+              <div class="muted" id="waktu">Pukul 10.00 WITA – selesai</div>
+            </div>
+          </div>
+          <div class="info">
+            <div class="icon">📍</div>
+            <div>
+              <div><strong>Alamat</strong></div>
+              <div class="muted" id="alamat">Jl. Contoh No. 123, Takalar, Sulawesi Selatan</div>
+              <div class="cta-row"><a class="btn alt" id="maps" href="https://maps.google.com/?q=-5.416,119.450" target="_blank" rel="noopener">Lihat di Google Maps</a></div>
+            </div>
+          </div>
+          <div class="info">
+            <div class="icon">👨‍👩‍👧</div>
+            <div>
+              <div><strong>Tuan Rumah</strong></div>
+              <div class="muted" id="ortu">Ananda dari: Bpk. Irwandi T. Dg. Nyengka & Ibu Asri Septiana Dg. Ngai</div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="quote">“Sesungguhnya setiap anak tergadai dengan aqiqahnya yang disembelihkan pada hari ketujuh, diberi nama dan dicukur rambutnya."
+ <span class="muted">(HR. Ahmad dan Ashhabus Sunan)</span></div>
+          <div class="cta-row">
+            <a class="btn" id="rsvp" href="https://wa.me/6281234567890?text=Assalamu'alaikum%2C%20insyaAllah%20hadir%20di%20aqiqah%20Alif" target="_blank" rel="noopener">Konfirmasi via WhatsApp</a>
+            <a class="btn alt" id="savdate" href="#">Simpan Tanggal</a>
+          </div>
+        </section>
+
+        <aside class="panel">
+          <p class="title">Susunan & Catatan</p>
+          <div class="divider"></div>
+          <ul class="muted">
+            <li>09.30 – 10.00: Kedatangan tamu</li>
+            <li>10.00 – 10.30: Pembukaan & doa</li>
+            <li>10.30 – 12.00: Ramah tamah & jamuan</li>
+          </ul>
+          <div class="divider"></div>
+          <p class="title">Hadiah/Amplop</p>
+          <p class="muted">Kehadiran dan doa sudah sangat berarti. Jika ingin berbagi, dapat melalui: <br/>
+            <strong>DANA • 087795032155 • a.n. Erwin Azis</strong>
+          </p>
+          <div class="divider"></div>
+          <p class="title">Kontak</p>
+          <p class="muted">CP: 0877-9503-2155 (Limpo)</p>
+        </aside>
+      </div>
+
+      <div class="footer">Terima kasih atas doa dan kehadirannya. Semoga Allah memberkahi kita semua. 🌸</div>
+    </div>
+  </div>
+
+  <script>
+    // ====== MUDAHKAN EDIT DI SINI ======
+    const dataUndangan = {
+      namaBayi: "Janisa Putri Irwandi",
+      tanggalISO: "2025-09-07T10:00:00+08:00", // ganti sesuai WITA/WIB/WIT
+      teksTanggal: "Ahad, 07 September 2025",
+      waktu: "Pukul 10.00 WITA – selesai",
+      alamat: "Jl. Abd. Baki Dg. Nyau Kel. Bajeng Kec. Pattallassang Kab. Takalar Prov. Sulawesi Selatan",
+      maps: "https://maps.app.goo.gl/6uoBq7didkx7CLFw5",
+      orangTua: "Putri dari: Bpk. Irwandi T. Dg. Nyengka & Ibu Asri Septiana Dg. Ngai",
+      waRSVP: "https://wa.me/6287795032155"
+    };
+
+    // Render teks
+    document.getElementById('nama-bayi').innerHTML = `Aqiqah <span style="color:#7b6836">${dataUndangan.namaBayi}</span>`;
+    document.getElementById('tgl').textContent = dataUndangan.teksTanggal;
+    document.getElementById('waktu').textContent = dataUndangan.waktu;
+    document.getElementById('alamat').textContent = dataUndangan.alamat;
+    document.getElementById('maps').href = dataUndangan.maps;
+    document.getElementById('ortu').textContent = dataUndangan.orangTua;
+    document.getElementById('rsvp').href = dataUndangan.waRSVP;
+
+    // Countdown sederhana
+    const cd = document.getElementById('countdown');
+    const tgl = new Date(dataUndangan.tanggalISO).getTime();
+    if (!isNaN(tgl)) {
+      cd.hidden = false;
+      const d = document.getElementById('cd-d');
+      const h = document.getElementById('cd-h');
+      const m = document.getElementById('cd-m');
+      const s = document.getElementById('cd-s');
+      function tick(){
+        const now = Date.now();
+        let diff = tgl - now;
+        if (diff < 0) diff = 0;
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+        const secs = Math.floor((diff % (1000*60)) / 1000);
+        d.textContent = days.toString().padStart(2,'0');
+        h.textContent = hours.toString().padStart(2,'0');
+        m.textContent = mins.toString().padStart(2,'0');
+        s.textContent = secs.toString().padStart(2,'0');
+      }
+      tick();
+      setInterval(tick, 1000);
+    }
+
+    // Simpan ke kalender (file .ics)
+    document.getElementById('savdate').addEventListener('click', function(e){
+      e.preventDefault();
+      const start = new Date(dataUndangan.tanggalISO);
+      const end = new Date(start.getTime() + 2*60*60*1000); // default 2 jam
+      function toICS(dt){
+        return dt.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
+      }
+      const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Undangan Aqiqah//ID\nBEGIN:VEVENT\nUID:${Date.now()}@aqiqah\nDTSTAMP:${toICS(new Date())}\nDTSTART:${toICS(start)}\nDTEND:${toICS(end)}\nSUMMARY:Aqiqah ${dataUndangan.namaBayi}\nLOCATION:${dataUndangan.alamat}\nDESCRIPTION:Mohon kehadirannya pada aqiqah ${dataUndangan.namaBayi}. Info & RSVP: ${dataUndangan.waRSVP}\nEND:VEVENT\nEND:VCALENDAR`;
+      const blob = new Blob([ics], {type:'text/calendar'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = `Aqiqah-${dataUndangan.namaBayi.replace(/\s+/g,'_')}.ics`;
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
